@@ -1,44 +1,68 @@
 # Hackpad MK2
 
-A premium, 9-key custom macro pad based on the RP2040 microcontroller, featuring an SSD1306 OLED display for real-time feedback.
+This repository contains all files for the **Hackpad MK2** project, a custom 9-key macro pad designed for productivity and customization.
 
-![Hackpad MK2](Images/hackpad.jpg) *(Note: Ensure an image exists in the Images folder)*
-
-## Features
-
-- **9 Programmable Keys**: Full control over your shortcuts and macros.
-- **RP2040 Powered**: High-performance, dual-core ARM Cortex-M0+ processor.
-- **OLED Display**: 128x32 SSD1306 display to show key presses and status.
-- **CircuitPython**: Easy to customize and flash without complex IDEs.
-- **3D Printed Case**: Sleek, functional design with top and bottom shells.
-
-## Repository Structure
-
-- `/CAD`: 3D models and assembly files for the case (STEP format).
-- `/PCB`: KiCad design files, including schematic and PCB layout.
-- `/Firmware`: CircuitPython source code (`main.py`).
-- `/Images`: Project photos and diagrams.
-
-## Hardware Specifications
-
-- **Controller**: RP2040 (e.g., Raspberry Pi Pico or similar module).
-- **Display**: 128x32 I2C OLED (SSD1306).
-- **Matrix**: 9 independent keys pulled up to internal resistors.
-- **Interface**: USB HID (Keyboard).
-
-## Software Setup
-
-1. Flash your RP2040 with the latest [CircuitPython firmware](https://circuitpython.org/downloads).
-2. Copy the contents of the `/Firmware` folder to the `CIRCUITPY` drive.
-3. Ensure the following libraries are present in the `lib` folder on the device:
-   - `adafruit_display_text`
-   - `adafruit_ssd1306`
-   - `adafruit_hid`
-
-## Customization
-
-The `key_map` in `main.py` allows you to redefine what each key does. Simply modify the `Keycode` values to match your preferred shortcuts.
+It features:
+- 3x3 mechanical keys (9 total)
+- 0.91" OLED display (SSD1306)
+- Powered by an RP2040 microcontroller (compatible with CircuitPython)
 
 ---
 
-**Designed and Programmed by Saverio Martino**
+## Hackpad Overview
+
+The Hackpad MK2 is designed with a sleek and compact form factor, perfect for desktop shortcuts and macros.
+
+<img src="Images/1.png" alt="Hackpad Overview" width="600">
+
+---
+
+## Schematic
+![Schematic Screenshot](Images/4.png) 
+
+The schematic, designed in KiCad, shows the wiring for the 9 independent keys and the I2C OLED display. Each key is connected to a dedicated GPIO on the RP2040, and the OLED follows the GND-VCC-SCL-SDA pinout.
+
+---
+
+## PCB Layout
+The PCB was designed focusing on a clean layout and easy assembly. It includes custom silkscreen labeling and broad copper traces for reliability.
+
+<img src="Images/5.png" alt="PCB Layout" width="500">
+
+---
+
+## Case Design
+
+The case consists of two main parts: the base and the top cover, designed to be 3D printed and fit perfectly with the PCB.
+
+<img src="Images/2.png" alt="Case Base" width="400">
+<img src="Images/3.png" alt="Case Cover" width="400">
+
+---
+
+## Bill of Materials (BOM)
+List of all components used in this project:
+
+| Part | Quantity | Description | 
+|------|----------|-------------|
+| Mechanical Key Switches | 9 | MX-style switches |
+| Keycaps | 9 | Compatible with MX switches | 
+| RP2040 Microcontroller | 1 | e.g., Seeed XIAO RP2040 | 
+| OLED Display 0.91" | 1 | 128x32 I2C interface | 
+| Custom PCB | 1 | Hackpad MK2 Design | 
+| 3D Printed Case | 1 | Base + Cover | 
+
+---
+
+## Firmware Instructions
+
+1. Download and install the latest **CircuitPython** .uf2 for your board.
+2. Connect the RP2040 via USB and copy the firmware files.
+3. Ensure the following libraries are in the `lib` folder:
+   - `adafruit_display_text`
+   - `adafruit_ssd1306`
+   - `adafruit_hid`
+4. Copy `main.py` (or rename to `code.py`) to the device.
+
+## License
+This project is open-source and created by **Saverio Martino**.
